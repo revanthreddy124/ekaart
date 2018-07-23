@@ -17,9 +17,12 @@ public class Product {
 	@Id
 	private String id;
 	private String name;
+	
+
 	private String description;
 	
 	private int price;
+	private int Quantity;
 
 	private String categoryId;
 	private String supplierId;
@@ -94,6 +97,13 @@ public class Product {
 
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
+	}
+	public int getQuantity() {
+		return Quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		Quantity = quantity;
 	}
 
 

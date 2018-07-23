@@ -43,12 +43,13 @@ private static AnnotationConfigApplicationContext context;
 	public void saveProductTestCase()
 	{
 		product = new Product();
-		product.setId("Pro004");
-		product.setName("Nike-- product");
-		product.setDescription("This is nike product");
+		product.setId("Pro005");
+		product.setName("smooth");
+		product.setDescription("This is a nike product with touch screen display and bluetooth connectivity");
 		product.setCategoryId("wat001");
-		product.setSupplierId("Sup004");
-		product.setPrice(20000);
+		product.setSupplierId("Sup003");
+		product.setPrice(10000);
+		product.setQuantity(25);
 		
 	  boolean status = 	productDAO.save(product);
 	  
@@ -91,7 +92,7 @@ private static AnnotationConfigApplicationContext context;
 	@Test
 	public void deleteProductSuccessTestCase()
 	{
-	boolean status =	productDAO.delete("Lenevo-001");
+	boolean status =	productDAO.delete("Pro001");
 	assertEquals("delete product succss test case" , true, status);
 	
 	}

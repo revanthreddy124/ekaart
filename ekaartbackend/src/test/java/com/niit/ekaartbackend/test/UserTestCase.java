@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -26,7 +27,7 @@ private static AnnotationConfigApplicationContext context;
 	public static void init()
 	{
 		context = new AnnotationConfigApplicationContext();
-		//scan the complete package and check for annoations like
+		//scan the complete package and check for annotations like
 		//@Component, @Controller, @Repository, @Service
 		context.scan("com.niit"); 
 		//clear the context(bean factory, and recreate all the
@@ -37,30 +38,31 @@ private static AnnotationConfigApplicationContext context;
 		userDAO = (UserDAO)context.getBean("userDAO");
 		user = (User)context.getBean("user");
 	}
+	//@Ignore
 	@Test
 	public void saveUserTestCase()
 	{
 		user = new User();
-		user.setEmailID("kiran@gmail.com");
-		user.setMobile("444444444");
-		user.setName("kiran kumar");
-		user.setPwd("kiran@123");
+		user.setEmailID("dhoni@gmail.com");
+		user.setMobile("15222333");
+		user.setName("dhoni");
+		user.setPwd("dhoni@123");
 		
 	  boolean status = 	userDAO.save(user);
 	  
 	  assertEquals("save user test case", true, status);
 	}
 	
-	
+	@Ignore
 	@Test
 	public void updateUserTestCase()
 	{
-		user.setEmailID("jaskaran1@gmail.com");
-		user.setMobile("888888888");
+		user.setEmailID("5star@gmail.com");
+		user.setMobile("1122333");
 		boolean status = userDAO.update(user);
 		assertEquals("update test case", true,status );
 	}
-	
+	@Ignore
 	@Test
 	public void getUserSuccessTestCase()
 	{
@@ -69,7 +71,7 @@ private static AnnotationConfigApplicationContext context;
 	
 	assertNotNull("get user test case", user);
 	}
-	
+	@Ignore
 	@Test
 	public void getUserFailureTestCase()
 	{
@@ -78,7 +80,7 @@ private static AnnotationConfigApplicationContext context;
 	
 	assertNull("get user test case", user);
 	}
-	
+	@Ignore
 	@Test
 	public void deleteUserSuccessTestCase()
 	{
@@ -86,7 +88,7 @@ private static AnnotationConfigApplicationContext context;
 	assertEquals("delete user succss test case" , true, status);
 	
 	}
-	
+	@Ignore
 	@Test
 	public void deleteUserFailureTestCase()
 	{
@@ -95,7 +97,7 @@ private static AnnotationConfigApplicationContext context;
 	
 	}
 	
-	
+	@Ignore
 	@Test
 	public void getAllUsersTestCase()
 	{
@@ -104,6 +106,7 @@ private static AnnotationConfigApplicationContext context;
 	assertEquals("get all usres " , 3, users.size() );
 	
 	}
+	@Ignore
 	@Test
 	public void validateCredentailsTestCase()
 	{
