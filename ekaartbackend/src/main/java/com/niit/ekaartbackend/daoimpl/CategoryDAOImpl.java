@@ -1,90 +1,84 @@
 package com.niit.ekaartbackend.daoimpl;
-import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.ekaartbackend.dao.CategoryDAO;
 import com.niit.ekaartbackend.model.Category;
 
-//another annotation...
+
+
+@Repository("categoryDAO")
 @Transactional
-@Repository("categoryDAO") // will create instance of CategoryDAOImpl and the name will categoryDAO
-
 public class CategoryDAOImpl implements CategoryDAO{
-	// first - inject hibernate session.
-		// @Autowire
-
-		@Autowired // session factory will automatically inject in this class
-		private SessionFactory sessionFactory;
-
-		@Autowired
-		private Category category;
-
-		//
-		public boolean save(Category category) {
-			// store in the database.
-			try {
-				sessionFactory.getCurrentSession().saveOrUpdate(category);
-				return true;
-			} catch (HibernateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}
-
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	public CategoryDAOImpl(SessionFactory sessionFactory)
+	{
+		this.sessionFactory = sessionFactory;
+	}
+	
+	public boolean save(Category category) {
+		try
+		{
+		sessionFactory.getCurrentSession().save(category);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
+		return true;
+	}
 
-		public boolean update(Category category) {
-			try {
-				sessionFactory.getCurrentSession().update(category);
-				return true;
-			} catch (HibernateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}
-
+	public boolean update(Category category) {
+		try
+		{
+		sessionFactory.getCurrentSession().update(category);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
-
-		public Category get(String id) {
-			// it will fetch the record based on id and store in Category class
-			return sessionFactory.getCurrentSession().get(Category.class, id);
-
+		return true;
+	}
+	
+	public boolean delete(String id) {
+		try {
+			sessionFactory.getCurrentSession().delete(getCategoryById(id));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
+		return true;
+	}
 
-		public boolean delete(String id) {
-			try {
-				category = get(id);
-				if (category == null) {
-					return false;
-				}
+	public List<Category> list() {
+		
+		return sessionFactory.getCurrentSession().createQuery("from Category").list();
+	}
 
-				sessionFactory.getCurrentSession().delete(category);
+	public Category getCategoryById(String id) {
+		
+		
+	  return 	(Category)  sessionFactory.getCurrentSession().get(Category.class, id);
+		
+	}
+	
+	
+	public Category getCategoryByName(String name) {
+		
+		
+		return 	(Category)  sessionFactory.getCurrentSession().createQuery("from Category where name = ?").setString(0, name).uniqueResult();
+		
+		
+		
+	}
 
-				return true;
-			} catch (HibernateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}
-
-		}
-
-		public List<Category> list() {
-		//return	sessionFactory.getCurrentSession().createQuery("from Category").list();
-			return (List<Category>) 
-			          sessionFactory.getCurrentSession()
-					.createCriteria(Category.class)
-					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-		}
-
+	
 
 }

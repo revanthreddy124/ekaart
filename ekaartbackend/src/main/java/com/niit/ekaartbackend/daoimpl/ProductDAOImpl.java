@@ -1,109 +1,79 @@
 package com.niit.ekaartbackend.daoimpl;
-import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.ekaartbackend.dao.ProductDAO;
 import com.niit.ekaartbackend.model.Product;
 
-//another annotation...
+
+
+@Repository("productDAO")
 @Transactional
-@Repository("productDAO") // will create instance of ProductDAOImpl and the name will productDAO
+public class ProductDAOImpl implements ProductDAO {
 
-public class ProductDAOImpl implements ProductDAO{
-	// first - inject hibernate session.
-		// @Autowire
+	@Autowired
+	private SessionFactory sessionFactory;
 
-		@Autowired // session factory will automatically inject in this class
-		private SessionFactory sessionFactory;
+	
+	public ProductDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
-		@Autowired
-		private Product product;
-
-		//
-		public boolean save(Product product) {
-			// store in the database.
-			try {
-				sessionFactory.getCurrentSession().save(product);
-				return true;
-			} catch (HibernateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}
-
-		}
-
-		public boolean update(Product product) {
-			try {
-				sessionFactory.getCurrentSession().update(product);
-				return true;
-			} catch (HibernateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}
-
-		}
-
-		public Product get(String emailID) {
-			// it will fetch the record based on emailID and store in Product class
-			return sessionFactory.getCurrentSession().get(Product.class, emailID);
-
-		}
-
-		public boolean delete(String emailID) {
-			try {
-				product = get(emailID);
-				if (product == null) {
-					return false;
-				}
-
-				sessionFactory.getCurrentSession().delete(product);
-
-				return true;
-			} catch (HibernateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}
-
-		}
-
-		public List<Product> list() {
-		return	sessionFactory.getCurrentSession().createQuery("from Product").list();
-		}
-
-		public List<Product> search(String searchString) {
+	public boolean saveOrUpdate(Product product) {
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate(product);
+		} catch (Exception e) {
 			
-			String hql ="from Product where description like '%"
-					+ searchString + "%'";
-			
-		return	sessionFactory.getCurrentSession().createQuery(hql).list();
-			
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	
+
+	public List<Product> list() {
+
+		return sessionFactory.getCurrentSession().createQuery("from Product").list();
+
+	}
+
+	public boolean delete(String id) {
+		try {
+			sessionFactory.getCurrentSession().delete(getProductById(id));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	public Product getProductById(String id) {
 		
-		}
+		return (Product) sessionFactory.getCurrentSession().get(Product.class, id);
+	}
 
-		public List<Product> search(String searchString, int maxPrice) {
-			
-			String hql ="from Product where description like '%"
-					+ searchString + "%'  and price < " +
-					maxPrice;
-			
-		return	sessionFactory.getCurrentSession().createQuery(hql).list();
+	public Product getProductByName(String name) {
+		return (Product) sessionFactory.getCurrentSession().createQuery("from Product where name = ?")
+				.setString(0, name).uniqueResult();
+	}
 
-		}
+	public List<Product> getAllProductsByCategoryId(String categoryId) {
+		
+		String hql = "from Product where category_Id=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, categoryId);
+		return query.list();
 
-		public List<Product> search(String searchString, int minPrice, int maxPrice) {
-			//SELECT * from product where description like '%book%'  and  price between 3000 and 4000
-			return null;
-		}
+	}
 
+	public List<Product> getAllProductsBySupplierId(String supplierId) {
+		return sessionFactory.getCurrentSession().createQuery("from Product where supplier_Id = ?").setString(0, supplierId).list();
+	}
 }

@@ -1,5 +1,4 @@
 package com.niit.ekaartbackend.model;
-
 import java.util.Date;
 
 import javax.persistence.Entity;

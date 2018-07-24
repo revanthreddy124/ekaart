@@ -1,86 +1,72 @@
 package com.niit.ekaartbackend.daoimpl;
-import java.sql.Date;
+
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.ekaartbackend.dao.SupplierDAO;
 import com.niit.ekaartbackend.model.Supplier;
 
-//another annotation...
+
+
+@Repository("supplierDAO")
 @Transactional
-@Repository("supplierDAO") // will create instance of SupplierDAOImpl and the name will supplierDAO
+public class SupplierDAOImpl implements SupplierDAO {
 
+	@Autowired
+	private SessionFactory sessionFactory;
 
-public class SupplierDAOImpl implements SupplierDAO{
-	// first - inject hibernate session.
-		// @Autowire
+	public SupplierDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
-		@Autowired // session factory will automatically inject in this class
-		private SessionFactory sessionFactory;
-
-		@Autowired
-		private Supplier supplier;
-
-		//
-		public boolean save(Supplier supplier) {
-			// store in the database.
-			try {
-				sessionFactory.getCurrentSession().save(supplier);
-				return true;
-			} catch (HibernateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}
-
+	public boolean save(Supplier supplier) {
+		try {
+			sessionFactory.getCurrentSession().save(supplier);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return false;
 		}
+		return true;
+	}
 
-		public boolean update(Supplier supplier) {
-			try {
-				sessionFactory.getCurrentSession().update(supplier);
-				return true;
-			} catch (HibernateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}
-
+	public boolean update(Supplier supplier) {
+		try {
+			sessionFactory.getCurrentSession().update(supplier);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return false;
 		}
+		return true;
+	}
 
-		public Supplier get(String emailID) {
-			// it will fetch the record based on emailID and store in Supplier class
-			return sessionFactory.getCurrentSession().get(Supplier.class, emailID);
+	public List<Supplier> list() {
+		return sessionFactory.getCurrentSession().createQuery("from Supplier").list();
+	}
 
-		}
 
-		public boolean delete(String emailID) {
-			try {
-				supplier = get(emailID);
-				if (supplier == null) {
-					return false;
-				}
+	public boolean delete(String id) {try {
+		sessionFactory.getCurrentSession().delete(getSupplierById(id));
+	} catch (Exception e) {
+		 
+		e.printStackTrace();
+		return false;
+	}
+	return true;}
 
-				sessionFactory.getCurrentSession().delete(supplier);
+	public Supplier getSupplierById(String id) {
+		
+		return (Supplier) sessionFactory.getCurrentSession().get(Supplier.class, id);
+	}
 
-				return true;
-			} catch (HibernateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return false;
-			}
-
-		}
-
-		public List<Supplier> list() {
-		return	sessionFactory.getCurrentSession().createQuery("from Supplier").list();
-		}
-
+	public Supplier getSupplierByName(String name) {
+		return 	(Supplier)  sessionFactory.getCurrentSession().createQuery("from Supplier where name = ?").setString(0, name).uniqueResult();
+	}
 
 }

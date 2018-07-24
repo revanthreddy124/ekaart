@@ -1,10 +1,8 @@
 package com.niit.ekaartbackend.test;
+
 import static org.junit.Assert.*;
 
-import java.util.List;
-
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,98 +10,58 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.niit.ekaartbackend.dao.SupplierDAO;
 import com.niit.ekaartbackend.model.Supplier;
 
+
 public class SupplierTestCase {
-private static AnnotationConfigApplicationContext context;
-	
+
 	@Autowired
-	private static SupplierDAO supplierDAO;
-	
+	static AnnotationConfigApplicationContext context;
+
 	@Autowired
-	private static Supplier supplier;
-	
-	
+	static SupplierDAO supplierDAO;
+	@Autowired
+	static Supplier supplier;
+
 	@BeforeClass
-	public static void init()
-	{
+	public static void initialize() {
 		context = new AnnotationConfigApplicationContext();
-		//scan the complete package and check for annoations like
-		//@Component, @Controller, @Repository, @Service
-		context.scan("com.niit"); 
-		//clear the context(bean factory, and recreate all the
-		//instances of the classes which are there in com.niit
-		//with proper annotations.
+		context.scan("com");
 		context.refresh();
-		//ask the context to get instance of SupplierDAO
-		supplierDAO = (SupplierDAO)context.getBean("supplierDAO");
-		supplier = (Supplier)context.getBean("supplier");
-	}
-	@Ignore
-	@Test
-	public void saveSupplierTestCase()
-	{
-		supplier = new Supplier();
-		supplier.setId("Sup004");
-		supplier.setName("Gems");
-		supplier.setAddress("BNReddy, Hyderabad");
+
+		supplierDAO = (SupplierDAO) context.getBean("supplierDAO");
+
 		
-	  boolean status = 	supplierDAO.save(supplier);
-	  
-	  assertEquals("save supplier test case", true, status);
+		supplier = (Supplier) context.getBean("supplier");
+
 	}
-	
-	//@Ignore
+
+	/*@Test
+	public void createSupplierTestCase() {
+		supplier.setId("SUPP1");
+		supplier.setName("Apollo");
+		supplier.setAddress("Lingampally");
+
+		boolean flag = supplierDAO.save(supplier);
+
+		assertEquals("createSupplierTestCase", true, flag);
+
+	}
+
 	@Test
-	public void updateSupplierTestCase()
-	{
-		supplier.setId("Sup001");
-		supplier.setName("5star");
-		supplier.setAddress("Kothapet , Hyderabad");
-		boolean status = supplierDAO.update(supplier);
-		assertEquals("update test case", true,status );
+	public void updateSupplierTestCase() {
+		supplier.setId("SUPP1");
+		supplier.setName("MedPlus+");
+		supplier.setAddress("Chandanagar");
+
+		boolean flag = supplierDAO.update(supplier);
+
+		assertEquals("updateSupplierTestCase", true, flag);
+
 	}
-	@Ignore
+
 	@Test
-	public void getSupplierSuccessTestCase()
-	{
-		
-	supplier= supplierDAO.get("Sup001");
-	
-	assertNotNull("get supplier test case", supplier);
-	}
-	@Ignore
-	@Test
-	public void getSupplierFailureTestCase()
-	{
-		
-	supplier= supplierDAO.get("Sup001");
-	
-	assertNull("get supplier test case", supplier);
-	}
-	@Ignore
-	@Test
-	public void deleteSupplierSuccessTestCase()
-	{
-	boolean status =	supplierDAO.delete("Sup001");
-	assertEquals("delete supplier succss test case" , true, status);
-	
-	}
-	@Ignore
-	@Test
-	public void deleteSupplierFailureTestCase()
-	{
-	boolean status =	supplierDAO.delete("Sup001");
-	assertEquals("delete supplier failure test case" , false, status);
-	
-	}
-	
-	@Ignore
-	@Test
-	public void getAllSuppliersTestCase()
-	{
-	List<Supplier>	suppliers = supplierDAO.list();
-	
-	assertEquals("get all usres " , 3, suppliers.size() );
-	
-	}
+	public void listAllSupplierTestCase() {
+		int actualSize = supplierDAO.list().size();
+		assertEquals(6, actualSize);
+	}*/
 
 }

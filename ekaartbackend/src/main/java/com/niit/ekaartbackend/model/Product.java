@@ -1,47 +1,41 @@
 package com.niit.ekaartbackend.model;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
-@Component
+
 @Entity
-@Table
-
-
+@Table(name = "Product")
+@Component
 public class Product {
+
 	@Id
 	private String id;
 	private String name;
-	
-
 	private String description;
-	
-	private int price;
-	private int Quantity;
+	private double price;
+	private int quantity;
 
-	private String categoryId;
-	private String supplierId;
+	private String category_id;
 
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
+	private String supplier_id;
 
 	@ManyToOne
-	@JoinColumn(name = "categoryId", updatable = false, insertable = false, nullable = false)
+	@JoinColumn(name = "category_id", updatable = false, insertable = false, nullable = false)
 	private Category category;
 
 	@ManyToOne
-	@JoinColumn(name = "supplierid", nullable = false, updatable = false, insertable = false)
+	@JoinColumn(name = "supplier_id", updatable = false, insertable = false, nullable = false)
 	private Supplier supplier;
+
+	@Transient
+	private MultipartFile image;
 
 	public String getId() {
 		return id;
@@ -67,20 +61,36 @@ public class Product {
 		this.description = description;
 	}
 
-	public String getSupplierId() {
-		return supplierId;
+	public double getPrice() {
+		return price;
 	}
 
-	public String getCategoryId() {
-		return categoryId;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setSupplierId(String supplierId) {
-		this.supplierId = supplierId;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getCategory_id() {
+		return category_id;
+	}
+
+	public void setCategory_id(String category_id) {
+		this.category_id = category_id;
+	}
+
+	public String getSupplier_id() {
+		return supplier_id;
+	}
+
+	public void setSupplier_id(String supplier_id) {
+		this.supplier_id = supplier_id;
 	}
 
 	public Category getCategory() {
@@ -98,13 +108,16 @@ public class Product {
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
-	public int getQuantity() {
-		return Quantity;
+
+	public MultipartFile getImage() {
+		return image;
 	}
 
-	public void setQuantity(int quantity) {
-		Quantity = quantity;
+	public void setImage(MultipartFile image) {
+		this.image = image;
 	}
 
+	
+	
 
 }

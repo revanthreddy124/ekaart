@@ -1,5 +1,4 @@
 package com.niit.ekaartbackend.daoimpl;
-
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.ekaartbackend.dao.My_CartDAO;
-import com.niit.ekaartbackend.model.Category;
 import com.niit.ekaartbackend.model.My_Cart;
+
+
 
 @Repository("my_CartDAO")
 @Transactional
@@ -44,11 +44,11 @@ public class My_CartDAOImpl implements My_CartDAO {
 	}
 
 	public List<My_Cart> list(String userID) {
-		return  sessionFactory.getCurrentSession().createQuery("from My_Cart where user_id=? and status = 'N'").setString(0, userID).list();
+		return  sessionFactory.getCurrentSession().createQuery("from My_Cart where user_id=?").setString(0, userID).list();
 	}
 
 	public double getTotalAmount(String userID) {
-		return (Double) sessionFactory.getCurrentSession().createQuery("select sum(price) from My_Cart where user_Id=? and status = 'N'").setString(0, userID).uniqueResult();
+		return (Double) sessionFactory.getCurrentSession().createQuery("select sum(price) from My_Cart where user_Id=?").setString(0, userID).uniqueResult();
 	}
 
 	public boolean delete(int id) {
@@ -69,7 +69,7 @@ public class My_CartDAOImpl implements My_CartDAO {
 
 	public boolean deleteAllProductsInCart(String user_id) {
 		try {
-			sessionFactory.getCurrentSession().createQuery("delete from My_Cart where user_id = ? and status = 'N'").setString(0, user_id).executeUpdate();
+			sessionFactory.getCurrentSession().createQuery("delete from My_Cart where user_id = ?").setString(0, user_id).executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,9 +79,24 @@ public class My_CartDAOImpl implements My_CartDAO {
 		
 	}
 
-	public boolean checkOut(String user_id) {
+	
+	public boolean updateQuant(int quant,String user_id) {
 		try {
-			sessionFactory.getCurrentSession().createQuery("update My_Cart set status = 'S' where user_id = ? and status = 'N'").setString(0, user_id).executeUpdate();
+			sessionFactory.getCurrentSession().createQuery("update My_Cart set Quantity = ? where user_id = ?").setInteger(0, quant).setString(1, user_id).executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+
+	public boolean updatePrice(Double price, String user_id) {
+		
+		try {
+			sessionFactory.getCurrentSession().createQuery("update My_Cart set Price = ? where user_id = ?").setDouble(0, price).setString(1, user_id).executeUpdate();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;

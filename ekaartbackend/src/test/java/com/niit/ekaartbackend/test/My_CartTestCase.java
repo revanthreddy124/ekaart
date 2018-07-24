@@ -2,10 +2,7 @@ package com.niit.ekaartbackend.test;
 
 import static org.junit.Assert.*;
 
-import java.util.Date;
-
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,6 +11,7 @@ import com.niit.ekaartbackend.dao.My_CartDAO;
 import com.niit.ekaartbackend.dao.ProductDAO;
 import com.niit.ekaartbackend.model.My_Cart;
 import com.niit.ekaartbackend.model.Product;
+
 
 public class My_CartTestCase {
 
@@ -35,7 +33,7 @@ public class My_CartTestCase {
 	public static void initialize()
 	{
 		context = new AnnotationConfigApplicationContext();
-		context.scan("com.niit");
+		context.scan("com");
 		context.refresh();
 		
 		//get the categoryDAO from context
@@ -45,32 +43,24 @@ public class My_CartTestCase {
 		my_Cart = (My_Cart)context.getBean("my_Cart");
 		
 	}
-	//@Ignore
-	@Test
+	
+	/*@Test
 	public void createCartTestCase() {
-		my_Cart.setUser_id("dhoni");
-		my_Cart.setPrice(10000);
-		my_Cart.setProduct_name("nike watch");
-		my_Cart.setQuantity(45);
-		my_Cart.setStatus("NA");
-		my_Cart.setDate_added(new Date());
+		my_Cart.setUser_id("IsaacDV");
+		my_Cart.setPrice(210);
+		my_Cart.setProduct_name("Glimmy 2");
 		
 		boolean flag = my_CartDAO.save(my_Cart);
 		
 		assertEquals("createCartTestCase",true,flag);
 	}
-	@Ignore
+	
 	@Test
 	public void deleteCartTestCase(){
-		boolean flag = my_CartDAO.deleteAllProductsInCart("suveen");
+		boolean flag = my_CartDAO.deleteAllProductsInCart("IsaacDV");
 		
 		assertEquals(true, flag);
 	}
-	@Ignore
-	@Test
-	public void checkOutCartTestCase(){
-		boolean flag = my_CartDAO.checkOut("myTest");
-		assertEquals("checkOutCartTestCase", flag, true);
-	}
-
+	
+*/
 }

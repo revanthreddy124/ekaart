@@ -1,6 +1,6 @@
 package com.niit.ekaartbackend.model;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,7 +12,9 @@ import org.springframework.stereotype.Component;
 public class Address {
 	
 	@Id
+	@GeneratedValue
 	private String id;
+	
 	private String user_id;
 	private String h_no;
 	private String street;

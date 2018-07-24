@@ -1,7 +1,4 @@
 package com.niit.ekaartbackend.model;
-import java.util.Date;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -9,33 +6,29 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 
-//whenever it scans all the classes under  particular package,
-//will create instance of this class.
 
-@Component  //to create instance;  the instance is same as class name, but
-			 //first character will be small letter  -- user
-@Entity     //to specify it is not normal class - it is data base entity
-@Table(name="user")  // to specify to which database table we need to map this class
-
-
+@Entity 
+@Table(name="User")
+@Component 
 public class User {
-	@Id   // to specify it is primary key
-	private String emailID;
 	
+	@Id
+	private String id;
 	
 	private String name;
+	private String email;
+	private String country;
+	private String address;
+	private String password;
+	private String contact;
+	private String role;
 	
-	@Column(name="password")  //to specify to map to a particular column in data base table.
-	private String pwd;
-
-	private String mobile;
-	private Character role;
-	private String registeredDate;
-	public String getEmailID() {
-		return emailID;
+	
+	public String getId() {
+		return id;
 	}
-	public void setEmailID(String emailID) {
-		this.emailID = emailID;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -43,31 +36,40 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPwd() {
-		return pwd;
+	public String getPassword() {
+		return password;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getMobile() {
-		return mobile;
+	public String getContact() {
+		return contact;
 	}
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
-	public Character getRole() {
+	public String getRole() {
 		return role;
 	}
-	public void setRole(Character role) {
-		
-		this.role = 'C';
+	public void setRole(String role) {
+		this.role = role;
 	}
-	public String getRegisteredDate() {
-		return registeredDate;
+	public String getEmail() {
+		return email;
 	}
-	public void setRegisteredDate(String registeredDate) {
-		this.registeredDate = new Date(System.currentTimeMillis())+"";
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
-
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 }

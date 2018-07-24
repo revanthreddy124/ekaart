@@ -3,7 +3,6 @@ package com.niit.ekaartbackend.test;
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,7 +10,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.niit.ekaartbackend.dao.AddressDAO;
 import com.niit.ekaartbackend.model.Address;
 
-public class AddressDAOTestCase {
+
+
+
+public class AddressTestCase {
 
 	@Autowired
 	static AnnotationConfigApplicationContext context;
@@ -25,7 +27,7 @@ public class AddressDAOTestCase {
 	@BeforeClass
 	public static void initialize() {
 		context = new AnnotationConfigApplicationContext();
-		context.scan("com.niit");
+		context.scan("com");
 		context.refresh();
 
 		addressDAO = (AddressDAO) context.getBean("addressDAO");
@@ -33,43 +35,43 @@ public class AddressDAOTestCase {
 		address = (Address) context.getBean("address");
 
 	}
-@Ignore
-	@Test
+
+	/*@Test
 	public void createAddressTestCase() {
-		address.setId("add124");
-		address.setUser_id("rajini");
-		address.setH_no("1/6/135");
-		address.setStreet("mahendra hills,dilsukhnagar");
-		address.setCity("hyderabad");
+		address.setId("isaacaddress");
+		address.setUser_id("IsaacDV");
+		address.setH_no("55");
+		address.setStreet("Annamayya Enclave");
+		address.setCity("BHEL");
 		address.setCountry("India");
-		address.setPin("533004");
+		address.setPin("502032");
 
 		boolean flag = addressDAO.save(address);
 
 		assertEquals("createAddressTestCase", true, flag);
 
 	}
-//@Ignore
+
 	@Test
 	public void updateAddressTestCase() {
-		address.setId("add124");
-		address.setUser_id("rajini");
-		address.setH_no("1/6/136");
-		address.setStreet("teachers colony,dilsukhnagar");
-		address.setCity("hyderabad");
+		address.setId("SurenderAddress");
+		address.setUser_id("Surender");
+		address.setH_no("185");
+		address.setStreet("Road No. 4");
+		address.setCity("Bramguda");
 		address.setCountry("India");
-		address.setPin("533005");
+		address.setPin("502032");
 
 		boolean flag = addressDAO.update(address);
 
 		assertEquals("createAddressTestCase", true, flag);
 
 	}
-@Ignore
+
 	@Test
 	public void listAllAddressTestCase() {
 		int actualSize = addressDAO.list().size();
 		assertEquals(2, actualSize);
-	}
+	}*/
 
 }

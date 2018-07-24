@@ -5,29 +5,21 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-
-@Component
 @Entity
-@Table
-
+@Component
 public class Supplier {
+
 	@Id
 	private String id;
-	
 	private String name;
-	
 	private String address;
-	
-	@OneToMany(mappedBy="supplier",fetch = FetchType.EAGER)
+
+	@OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER)
 	private Set<Product> products;
-	
-	//////////////////////////
-	
-	
+
 	public Set<Product> getProducts() {
 		return products;
 	}
@@ -59,7 +51,6 @@ public class Supplier {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 
 
 }

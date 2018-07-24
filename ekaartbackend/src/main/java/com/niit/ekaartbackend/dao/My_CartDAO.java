@@ -1,14 +1,19 @@
 package com.niit.ekaartbackend.dao;
-
 import java.util.List;
 
 import com.niit.ekaartbackend.model.My_Cart;
+
+
 
 public interface My_CartDAO {
 	
 	public boolean save(My_Cart my_Cart);
 
 	public boolean update(My_Cart my_Cart);
+	
+	public boolean updateQuant(int quant,String user_id);
+	
+	public boolean updatePrice(Double price,String user_id);
 	
 	public boolean delete(int id);
 	
@@ -19,7 +24,5 @@ public interface My_CartDAO {
 	public double getTotalAmount(String userID);
 	
 	public My_Cart getCartById(int id);
-	
-	public boolean checkOut(String user_id);
 
 }

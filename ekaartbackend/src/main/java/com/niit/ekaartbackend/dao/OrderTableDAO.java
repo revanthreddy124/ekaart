@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.niit.ekaartbackend.model.OrderTable;
 
+
+
 public interface OrderTableDAO {
 	
 	public boolean save(OrderTable orderTable);
