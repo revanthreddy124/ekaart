@@ -3,6 +3,7 @@ package com.niit.ekaartbackend.test;
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -37,43 +38,44 @@ public class CategoryTestCase {
 
 	}
 
-	/*@Test
+	@Ignore
+	@Test
 	public void createCategoryTestCase() {
-		category.setId("CATG1");
-		category.setName("Diabetic Medicine");
-		category.setDescription("Diabetic Medicine");
+		category.setId("cat001");
+		category.setName("Mobiles");
+		category.setDescription("This comes under mobile category");
 
 		boolean flag = categoryDAO.save(category);
 
 		assertEquals("createCategoryTestCase", true, flag);
 
 	}
-
+	@Ignore
 	@Test
 	public void updateCategoryTestCase() {
-		category.setId("CATG1");
-		category.setName("Dental Medicine");
-		category.setDescription("for tooth pain");
+		category.setId("cat002");
+		category.setName("Laptops");
+		category.setDescription("this comes under laptop category ");
 
 		boolean flag = categoryDAO.update(category);
 
 		assertEquals("updateCategoryTestCase", true, flag);
 
 	}
-
+	@Ignore
 	@Test
 	public void deleteCategoryTestCase() {
-		category.setName("Dental Medicine");
+		category.setName("Mobiles");
 		boolean flag = categoryDAO.delete(category.getName());
 
 		assertEquals("deleteCategoryTestCase", true, flag);
 
 	}
-
+	@Ignore
 	@Test
 	public void listAllCategoryTestCase() {
 		int actualSize = categoryDAO.list().size();
 		assertEquals(6, actualSize);
 	}
-*/
+
 }

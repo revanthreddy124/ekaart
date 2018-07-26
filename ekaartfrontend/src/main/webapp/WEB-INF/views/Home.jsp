@@ -3,7 +3,7 @@
 <html>
 <head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<title>Midas Touch Web Application</title>
+<title>ekaart</title>
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script> -->
 <!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
@@ -23,6 +23,12 @@
 
 <!-- <script src="resources/js/jquery-3.2.0.js"></script>
 <script src="resources/js/bootstrap.js"></script> -->
+<style type="text/css">
+.navbar-custom{
+color: #ff4d4d;
+background-color: #ff4d4d;
+}
+</style>
 </head>
 <body>
 	
@@ -89,6 +95,14 @@
 	<c:if test="${isUserAtHomePage=='true'}">
 		<jsp:include page="Carousel.jsp"></jsp:include>
 		<jsp:include page="AllProducts.jsp"></jsp:include>
+	</c:if>
+	<c:if test="${isUserAtPaymentPage=='true'}">
+		
+		<jsp:include page="user/Payment.jsp"></jsp:include>
+	</c:if>
+	<c:if test="${isUserAtCheckedOut=='true'}">
+		
+		<jsp:include page="user/checkOut.jsp"></jsp:include>
 	</c:if>
 
 	

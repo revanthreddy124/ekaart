@@ -3,6 +3,7 @@ package com.niit.ekaartbackend.test;
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -35,8 +36,8 @@ public class AddressTestCase {
 		address = (Address) context.getBean("address");
 
 	}
-
-	/*@Test
+	@Ignore
+	@Test
 	public void createAddressTestCase() {
 		address.setId("isaacaddress");
 		address.setUser_id("IsaacDV");
@@ -51,7 +52,7 @@ public class AddressTestCase {
 		assertEquals("createAddressTestCase", true, flag);
 
 	}
-
+	@Ignore
 	@Test
 	public void updateAddressTestCase() {
 		address.setId("SurenderAddress");
@@ -67,11 +68,11 @@ public class AddressTestCase {
 		assertEquals("createAddressTestCase", true, flag);
 
 	}
-
+	@Ignore
 	@Test
 	public void listAllAddressTestCase() {
 		int actualSize = addressDAO.list().size();
 		assertEquals(2, actualSize);
-	}*/
+	}
 
 }

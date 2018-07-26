@@ -2,22 +2,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style type="text/css">
-
-.navbar-custom {
-    color: #FFFFFF;
-    background-color: #304FFE;
+.navbar-custom{
+color: #ffffff;
+background-color: #663300;
 }
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Midas Touch Footer</title>
+<title>ekaart</title>
 </head>
 <body>
 	
 	<div class="navbar navbar-default navbar-custom navbar-fixed-bottom" style="height:15px;">
 		<div class="container-fluid">
 			<div class="navbar-text pull-left">
-				<p><marquee>&copy; Online Medical Store <b><i>Midas Touch</i></b> </marquee></p>
+				<p><marquee>&copy; Online Gadget Store <b><i>ekaart</i></b> </marquee></p>
 			</div>
 			<div class="navbar-text noStyle pull-right">
 				<a href="https://www.facebook.com/isaac.devavaram" target="_blank">

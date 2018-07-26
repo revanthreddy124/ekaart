@@ -11,15 +11,15 @@
 		
 		<div class="container">
 			<div class="col-xs-offset-5 col-xs-2" style="padding-left: 0px; padding-right: 0px;">
-				<img src="<c:url value="/resources/images/checkMark.jpg" />" class="img-responsive">
+				<img src="<c:url value="/resources/images/0042_089_check_well_ready_okey-512.jpg" />" class="img-responsive">
 			</div>
 		</div>
 
 		<div class="h2 text-success text-center">You are cool!</div>
-		<div class="h2 text-center">Thank you for Shopping at Midas Touch. The amount of <b class="text-success"><i class="fa fa-inr" aria-hidden="true"></i> ${totalAmount}</b> will be received at the time of delivery.</div>
+		<div class="h2 text-center">Thank you for Shopping at ekaart. The amount of <b class="text-success"><i class="fa fa-inr" aria-hidden="true"></i> ${totalAmount}</b> will be received at the time of delivery.</div>
 		<div class="h2 text-center">The product will be delivered in 5-8 business days.</div>
 
-		<img src="<c:url value="/resources/images/Thank You.gif" />" alt="Thank You GIF" class="img-responsive center-block" />
+		<img src="<c:url value="/resources/images/Thankyou.gif" />" alt="Thank You GIF" class="img-responsive center-block" />
 
 	</div>
 </body>

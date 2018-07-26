@@ -3,6 +3,7 @@ package com.niit.ekaartbackend.test;
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -33,7 +34,7 @@ public class UserTestCase {
 		user = (User) context.getBean("user");
 
 	}
-	
+	@Ignore
 	@Test
 	public void createUserTestCase() {
 		user.setEmail("revanth@gmail.com");
@@ -49,13 +50,13 @@ public class UserTestCase {
 		assertEquals("createUserTestCase", true, flag);
 
 	}
-	
-/*	@Test
+	@Ignore
+@Test
 	public void updateUserTestCase() {
-		user.setEmail("isaacdv84@gmail.com");
-		user.setId("IsaacDV");
-		user.setName("Isaac Deva Varam");
-		user.setPassword("isaac");
+		user.setEmail("revanth@gmail.com");
+		user.setId("revanth");
+		user.setName("revanth reddy");
+		user.setPassword("revanth");
 		user.setCountry("India");
 		user.setAddress("Hyderabad");
 		user.setRole("ROLE_USER");
@@ -65,7 +66,7 @@ public class UserTestCase {
 		assertEquals("updateUserTestCase", true, flag);
 
 	}
-
+	@Ignore
 	@Test
 	public void validateUserTestCase() {
 
@@ -73,11 +74,11 @@ public class UserTestCase {
 		assertEquals(true, flag);
 
 	}
-
+	@Ignore
 	@Test
 	public void listAllUserTestCase() {
 		int actualSize = userDAO.list().size();
 		assertEquals(5, actualSize);
-	}*/
+	}
 
 }

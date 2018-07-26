@@ -150,11 +150,20 @@ public class HomeController {
 		model.addAttribute("isUserClickedMain", "true");
 		return "Home";
 	}
-
 	@RequestMapping("/ContactUs")
 	public String contactUsPage(Model model) {
 		model.addAttribute("isUserClickedContactUs", "true");
 		model.addAttribute("isUserAtHomePage", "false");
 		return "Home";
+	}
+
+
+	
+	@RequestMapping("/myCart-Payment")
+	public String paymentPage(Model model) {
+		model.addAttribute("isUserAtPaymentPage", "true");
+		model.addAttribute("isUserAtHomePage", "false");
+		return "Home";
+		
 	}
 }

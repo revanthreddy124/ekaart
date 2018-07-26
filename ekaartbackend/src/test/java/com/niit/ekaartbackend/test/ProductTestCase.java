@@ -3,6 +3,7 @@ package com.niit.ekaartbackend.test;
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -33,41 +34,43 @@ public class ProductTestCase {
 		product = (Product)context.getBean("product");
 		
 	}
-	/*
+	@Ignore
 	@Test
 	public void createProductTestCase()
 	{
 		
-		product.setId("PROD1");
-		product.setCategory_id("CATG1");
-		product.setDescription("Diabetic Medicine");
-		product.setName("Glimmy1");
-		product.setPrice(210);
+		product.setId("Pro001");
+		product.setCategory_id("cat001");
+		product.setDescription("Apple mobile with good screen feature");
+		product.setName("iphone 8 plus");
+		product.setPrice(65000);
 		product.setQuantity(1);
-		product.setSupplier_id("SUPP1");
+		product.setSupplier_id("Sup001");
 		
 		boolean flag =  productDAO.saveOrUpdate(product);
 
 		assertEquals("createProductTestCase",true,flag);
 		
 	}
+	@Ignore
 	@Test
 	public void updateProductTestCase()
 	{
-		product.setId("PROD1");
-		product.setName("Glimmy2");
-		product.setDescription("Diabetic Medicine");
-		product.setCategory_id("CATG1");
-		product.setPrice(150);
-		product.setSupplier_id("SUPP1");
-		product.setQuantity(2);
+		product.setId("Pro008");
+		product.setName("macbook air");
+		product.setDescription("Apple laptop category");
+		product.setCategory_id("Cat002");
+		product.setPrice(75990);
+		product.setSupplier_id("Sup001");
+		product.setQuantity(20);
 		boolean flag = productDAO.saveOrUpdate(product);
 		assertEquals("update Product TestCase",true,flag);
 	}
+	@Ignore
 	@Test
 	public void listAllProductTestCase()
 	{
 		int actualSize = productDAO.list().size();
 		assertEquals(2, actualSize);
-	} */
+	} 
 }

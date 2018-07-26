@@ -56,7 +56,7 @@
 					<td><a href="Home" class="btn btn-warning">Continue Shopping</a></td>
 					<td></td>
 					<td>Total Rs. ${totalAmount}</td>
-					<td><a href="myCart-checkOut/${cart.user_id}" class="btn btn-success">Check Out</a></td>
+					<td><a href="myCart-Payment" class="btn btn-success">proceed for payment</a></td>
 				</tr>
 
 			</table>

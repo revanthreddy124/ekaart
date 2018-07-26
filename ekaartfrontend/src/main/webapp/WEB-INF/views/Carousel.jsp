@@ -23,34 +23,34 @@
 					<div class="carousel-inner">
 						<div class="item active">
 							<a href="">
-								<img src="<c:url value="/resources/images/ad1.jpg" />" alt="Image 1" style="width:100%;height:500px;">
+								<img src="<c:url value="/resources/images/11_d_ecommerce_600.jpg" />" alt="Image 1" style="width:100%;height:500px;">
 							</a>
 
 						</div>
 						<div class="item">
 							<a href="">
-								<img src="<c:url value="/resources/images/img1.jpg" />" alt="Image 1" style="width:100%;height:500px;">
+								<img src="<c:url value="/resources/images/a8886607e6212762c38b04df3a294b25--mac-apple-ipad-mini-.jpg" />" alt="Image 2" style="width:100%;height:500px;">
 							</a>
 
 						</div>
 						<div class="item">
 							<a href="">
-								<img src="<c:url value="/resources/images/img2.jpg" />" alt="Image 2" style="width:100%;height:500px;">
+								<img src="<c:url value="/resources/images/4-laptops-dan-02.jpg" />" alt="Image 3" style="width:100%;height:500px;">
 							</a>
 						</div>
 						<div class="item">
 							<a href="">
-								<img src="<c:url value="/resources/images/img3.jpg" />" alt="Image 3" style="width:100%;height:500px;">
+								<img src="<c:url value="/resources/images/everything_smartwatch.0.jpg" />" alt="Image 4" style="width:100%;height:500px;">
 							</a>
 						</div>
 						<div class="item">
 							<a href="">
-								<img src="<c:url value="/resources/images/img4.jpg" />" alt="Image 4" style="width:100%;height:500px;">
+								<img src="<c:url value="/resources/images/phpyvs0kj.jpg" />" alt="Image 5" style="width:100%;height:500px;">
 							</a>
 						</div>
 						<div class="item">
 							<a href="">
-								<img src="<c:url value="/resources/images/img5.jpg" />" alt="Image 5" style="width:100%;height:500px;">
+								<img src="<c:url value="/resources/images/Business-On-The-Go-featured-image.jpg" />" alt="Image 6" style="width:100%;height:500px;">
 							</a>
 						</div>
 

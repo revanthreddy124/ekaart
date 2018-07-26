@@ -3,6 +3,7 @@ package com.niit.ekaartbackend.test;
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -33,11 +34,11 @@ public class ContactTestCase {
 		contact = (Contact) context.getBean("contact");
 
 	}
-
-	/*@Test
+@Ignore
+	@Test
 	public void createContactTestCase() {
-		contact.setName("B Isaac Deva Varam");
-		contact.setEmail("isaacdv84@gmail.com");
+		contact.setName("C.Seshagiri Rao");
+		contact.setEmail("seshagirirao@gmail.com");
 		contact.setContact("8194869957");
 		contact.setMessage("Original : You designed a  web application");
 
@@ -46,7 +47,7 @@ public class ContactTestCase {
 		assertEquals("createContactTestCase", true, flag);
 
 	}
-
+@Ignore
 	@Test
 	public void updateContactTestCase() {
 
@@ -55,11 +56,11 @@ public class ContactTestCase {
 		assertEquals("updateContactTestCase", true, flag);
 
 	}
-
+@Ignore
 	@Test
 	public void listAllContactTestCase() {
 		int actualSize = contactDAO.list().size();
 		assertEquals(1, actualSize);
-	}*/
+	}
 
 }

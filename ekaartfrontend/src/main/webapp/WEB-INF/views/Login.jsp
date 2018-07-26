@@ -2,6 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style type="text/css">
+body{ 
+background:url("https://www.canstockphoto.com/seamless-gadgets-background-texture-12129673.html")no-repeat center center;
+background-size:cover;
+}
+
+</style>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Midas Touch Login</title>

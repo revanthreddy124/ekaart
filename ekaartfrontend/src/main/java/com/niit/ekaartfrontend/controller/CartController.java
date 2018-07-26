@@ -205,7 +205,7 @@ public class CartController {
 		return "redirect:/checkout";
 	}
 	
-	@RequestMapping("/checkout")
+	@RequestMapping("/checkOut")
 	public String viewProductHome(Model model) {
 		model.addAttribute("isUserCheckedOut", "true");
 		String loggedInUserID = (String) session.getAttribute("loggedInUserID");

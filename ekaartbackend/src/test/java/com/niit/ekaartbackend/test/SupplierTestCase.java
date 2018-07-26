@@ -3,6 +3,7 @@ package com.niit.ekaartbackend.test;
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -33,35 +34,35 @@ public class SupplierTestCase {
 		supplier = (Supplier) context.getBean("supplier");
 
 	}
-
-	/*@Test
+	@Ignore
+	@Test
 	public void createSupplierTestCase() {
-		supplier.setId("SUPP1");
-		supplier.setName("Apollo");
-		supplier.setAddress("Lingampally");
+		supplier.setId("Sup001");
+		supplier.setName("dhoni");
+		supplier.setAddress("green hills,kothapet,hyderabad,telangana");
 
 		boolean flag = supplierDAO.save(supplier);
 
 		assertEquals("createSupplierTestCase", true, flag);
 
 	}
-
+	@Ignore
 	@Test
 	public void updateSupplierTestCase() {
-		supplier.setId("SUPP1");
-		supplier.setName("MedPlus+");
-		supplier.setAddress("Chandanagar");
+		supplier.setId("Sup001");
+		supplier.setName("dhoni");
+		supplier.setAddress("teachers colony,dilsukhnagar,hyderabad,telangana");
 
 		boolean flag = supplierDAO.update(supplier);
 
 		assertEquals("updateSupplierTestCase", true, flag);
 
 	}
-
+	@Ignore
 	@Test
 	public void listAllSupplierTestCase() {
 		int actualSize = supplierDAO.list().size();
 		assertEquals(6, actualSize);
-	}*/
+	}
 
 }
